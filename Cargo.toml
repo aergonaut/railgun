@@ -17,3 +17,4 @@ uuid = { version = "0.5.0", features = ["serde"] }
 r2d2 = "0.7.2"
 r2d2-diesel = "0.12.0"
 error-chain = "0.10.0"
+rust-crypto = "0.2.36"

@@ -31,7 +31,7 @@ mod tests {
             .mount("/", routes![super::index]);
 
         let mut request = MockRequest::new(Method::Get, "/pull_requests");
-        let mut response = request.dispatch_with(&app);
+        let response = request.dispatch_with(&app);
 
         assert_eq!(Status::Ok, response.status());
     }

@@ -14,9 +14,11 @@ extern crate r2d2;
 extern crate r2d2_diesel;
 extern crate rocket;
 extern crate rocket_contrib;
+extern crate crypto;
 extern crate serde;
 #[macro_use]
 extern crate serde_derive;
+#[macro_use]
 extern crate serde_json;
 extern crate uuid;
 
@@ -24,6 +26,7 @@ mod db;
 mod errors;
 mod handlers;
 mod models;
+mod request;
 mod schema;
 
 fn main() {
