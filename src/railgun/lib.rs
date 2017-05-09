@@ -22,18 +22,15 @@ extern crate serde_derive;
 extern crate serde_json;
 extern crate uuid;
 
-mod db;
-mod errors;
-mod handlers;
-mod models;
-mod request;
-mod schema;
+pub mod db;
+pub mod errors;
+pub mod handlers;
+pub mod models;
+pub mod request;
+pub mod schema;
 
-fn main() {
-    dotenv::dotenv().ok();
-    
+pub fn app() -> rocket::Rocket {
     rocket::ignite()
         .manage(db::establish_connection_pool())
         .mount("/", routes![handlers::pull_requests::index])
-        .launch();
 }

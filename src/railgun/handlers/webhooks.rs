@@ -9,11 +9,11 @@ use rocket::State;
 use serde_json as json;
 
 #[post("/webhook", data = "<payload>")]
-pub fn receive(event: GitHubEvent, payload: SignedPayload, db_conn: State<db::ConnectionPool>) -> Result<()> {
+pub fn receive(event: Option<GitHubEvent>, payload: SignedPayload, db_conn: State<db::ConnectionPool>) -> Result<()> {
     let data = json::from_str::<json::Value>(&payload.0).chain_err(|| "Could not decode request body")?;
     let conn = db_conn.get().chain_err(|| "Could not establish database connection")?;
     match event {
-        GitHubEvent::PullRequest => pull_request_event(&data, &*conn),
+        Some(GitHubEvent::PullRequest) => pull_request_event(&data, &*conn),
         _ => unimplemented!()
     }
 }

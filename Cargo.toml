@@ -3,6 +3,15 @@ name = "railgun"
 version = "0.1.0"
 authors = ["Chris Fung <aergonaut@gmail.com>"]
 
+[lib]
+name = "railgun"
+path = "src/railgun/lib.rs"
+
+[[bin]]
+name = "server"
+test = false
+doc = false
+
 [dependencies]
 rocket = { git = "https://github.com/SergioBenitez/Rocket" }
 rocket_codegen = { git = "https://github.com/SergioBenitez/Rocket" }
